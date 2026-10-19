@@ -1,0 +1,26 @@
+name: iOS build
+
+on:
+  push:
+    paths:
+      - "Hydra/**"
+      - "Hydra.xcodeproj/**"
+      - ".github/workflows/ios-build.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Xcode version
+        run: xcodebuild -version
+      - name: Build (simulatore, senza firma)
+        run: |
+          xcodebuild build \
+            -project Hydra.xcodeproj \
+            -target Hydra \
+            -sdk iphonesimulator \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO
