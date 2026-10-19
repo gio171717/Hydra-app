@@ -10,37 +10,50 @@ struct QuickAddGrid: View {
     private let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
 
     var body: some View {
-        LazyVGrid(columns: columns, spacing: 10) {
-            ForEach(ContainerKind.allCases) { kind in
-                let ml = store.settings.ml(for: kind)
-                Button { onAdd(kind, 1) } label: {
-                    QuickTile(title: kind.shortName, value: Fmt.amount(ml)) {
-                        ContainerIcon(kind: kind, size: 38)
-                    }
-                }
-                .buttonStyle(PressableStyle())
-                .contextMenu {
+        VStack(spacing: 10) {
+            LazyVGrid(columns: columns, spacing: 10) {
+                ForEach(ContainerKind.allCases) { kind in
+                    let ml = store.settings.ml(for: kind)
                     Button { onAdd(kind, 1) } label: {
-                        Label("Intera · \(Fmt.amount(ml))", systemImage: "drop.fill")
+                        QuickTile(title: kind.shortName, value: Fmt.amount(ml)) {
+                            ContainerIcon(kind: kind, size: 38)
+                        }
                     }
-                    Button { onAdd(kind, 0.5) } label: {
-                        Label("Metà · \(Fmt.amount(ml / 2))", systemImage: "drop.halffull")
+                    .buttonStyle(PressableStyle())
+                    .contextMenu {
+                        Button { onAdd(kind, 1) } label: {
+                            Label("Intera · \(Fmt.amount(ml))", systemImage: "drop.fill")
+                        }
+                        Button { onAdd(kind, 0.5) } label: {
+                            Label("Metà · \(Fmt.amount(ml / 2))", systemImage: "drop.halffull")
+                        }
+                        Button { onAdd(kind, 0.25) } label: {
+                            Label("Un quarto · \(Fmt.amount(ml / 4))", systemImage: "drop")
+                        }
                     }
-                    Button { onAdd(kind, 0.25) } label: {
-                        Label("Un quarto · \(Fmt.amount(ml / 4))", systemImage: "drop")
-                    }
+                    .accessibilityLabel("Aggiungi \(kind.name), \(Fmt.amount(ml))")
                 }
-                .accessibilityLabel("Aggiungi \(kind.name), \(Fmt.amount(ml))")
             }
 
             Button(action: onCustom) {
-                QuickTile(title: "Manuale", value: "ml") {
+                HStack(spacing: 10) {
                     Image(systemName: "plus")
-                        .font(.system(size: 20, weight: .semibold))
+                        .font(.system(size: 15, weight: .bold))
                         .foregroundStyle(Theme.accent)
-                        .frame(width: 38, height: 38)
+                        .frame(width: 30, height: 30)
                         .background(Circle().fill(Theme.accent.opacity(0.12)))
+                    Text("Inserisci i ml a mano")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(Theme.text)
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(Theme.muted)
                 }
+                .padding(.horizontal, 14)
+                .padding(.vertical, 12)
+                .cardStyle()
+                .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             }
             .buttonStyle(PressableStyle())
             .accessibilityLabel("Inserisci una quantità a mano")

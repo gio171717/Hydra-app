@@ -6,7 +6,7 @@ App per iPhone (SwiftUI, iOS 17+) per contare quanta acqua bevi ogni giorno.
 
 - **Obiettivo giornaliero in litri**: da 0,5 a 6 L, a passi di 0,1 L (slider, pulsanti +/− o scorciatoie 1,5 / 2 / 2,5 / 3 L).
 - **Aggiunta rapida con misure standard**: bicchiere di plastica (200 ml), bicchiere di vetro (250 ml),
-  bottiglietta di plastica (500 ml), bottiglia (1 L), bottiglia grande (1,5 L).
+  bottiglietta di plastica (500 ml), bottiglia (1 L), bottiglia grande (1,5 L), bottiglia maxi (2 L).
   Tieni premuto un contenitore per aggiungerne solo **metà** o **un quarto**.
   Le capienze si possono cambiare nelle impostazioni.
 - **Inserimento manuale** dei ml, con tastierino numerico, pulsanti ±50 ml e valori rapidi.

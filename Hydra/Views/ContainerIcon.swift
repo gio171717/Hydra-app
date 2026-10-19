@@ -33,11 +33,13 @@ struct VesselShape: Shape {
         case .glass:
             return cup(in: rect, top: 0.26, topHalf: 0.22, bottomHalf: 0.18, rimLine: nil, baseLine: 0.84)
         case .smallBottle:
-            return bottle(in: rect, top: 0.30, halfWidth: 0.15)
+            return bottle(in: rect, top: 0.34, halfWidth: 0.14)
         case .bottle:
-            return bottle(in: rect, top: 0.14, halfWidth: 0.18)
+            return bottle(in: rect, top: 0.20, halfWidth: 0.17)
         case .largeBottle:
-            return bottle(in: rect, top: 0.03, halfWidth: 0.22)
+            return bottle(in: rect, top: 0.09, halfWidth: 0.20)
+        case .extraLargeBottle:
+            return bottle(in: rect, top: 0.0, halfWidth: 0.24)
         }
     }
 

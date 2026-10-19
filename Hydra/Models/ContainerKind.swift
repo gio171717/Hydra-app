@@ -8,6 +8,7 @@ enum ContainerKind: String, Codable, CaseIterable, Identifiable {
     case smallBottle
     case bottle
     case largeBottle
+    case extraLargeBottle
 
     var id: String { rawValue }
 
@@ -18,6 +19,7 @@ enum ContainerKind: String, Codable, CaseIterable, Identifiable {
         case .smallBottle: "Bottiglietta di plastica"
         case .bottle: "Bottiglia"
         case .largeBottle: "Bottiglia grande"
+        case .extraLargeBottle: "Bottiglia maxi"
         }
     }
 
@@ -29,6 +31,7 @@ enum ContainerKind: String, Codable, CaseIterable, Identifiable {
         case .smallBottle: "Bottiglietta"
         case .bottle: "Bottiglia"
         case .largeBottle: "Bottiglia"
+        case .extraLargeBottle: "Bottiglia"
         }
     }
 
@@ -39,6 +42,7 @@ enum ContainerKind: String, Codable, CaseIterable, Identifiable {
         case .smallBottle: 500
         case .bottle: 1000
         case .largeBottle: 1500
+        case .extraLargeBottle: 2000
         }
     }
 }
